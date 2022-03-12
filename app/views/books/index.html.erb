@@ -1,2 +1,24 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<p id="notice">Book was successfully created.</p>
+
+<% @books.each do |book| %>
+
+<p>
+  <strong>Title:</strong>
+  <span>
+    <%= link_to book.本のタイトル, book_path(book.id)%>
+  </span>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <span>
+    <%= link_to book.感想, book_path(book.id)%>
+  </span>
+</p>
+
+<% end %>
+
+
+<a class="edit_57711" href="/books/57711/edit">Edit</a>
+
+<a class="back" href="/books">Back</a>

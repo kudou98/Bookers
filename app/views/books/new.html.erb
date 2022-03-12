@@ -1,6 +1,6 @@
 <h1>Books</h1>
 
-<%= form_with model: @book do |f| %>
+<%= form_with model: @book, url:'/books', method: :post do |f| %>
 
 <table>
   <thead>

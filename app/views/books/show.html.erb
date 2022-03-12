@@ -1,2 +1,20 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<p id="notice"></p>
+
+<p>
+  <strong>Title:</strong>
+  <p><%= @book.本のタイトル %></p>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <p><%= @book.感想 %></p>
+</p>
+
+
+<a class="edit_57704" href="/books/57704/edit">
+  <%= link_to "Edit", edit_book_path(@book.id) %>
+</a>
+
+|
+
+<a class="back" href="/books">Back</a>
