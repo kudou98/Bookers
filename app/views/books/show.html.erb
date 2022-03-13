@@ -1,20 +1,10 @@
-<p id="notice"></p>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <p><%= @book.本のタイトル %></p>
-</p>
+<p>Title:<%= @book.title %></p>
 
-<p>
-  <strong>Body:</strong>
-  <p><%= @book.感想 %></p>
-</p>
+<p>Body:<%= @book.body %></p>
 
 
-<a class="edit_57704" href="/books/57704/edit">
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-</a>
-
-|
-
-<a class="back" href="/books">Back</a>
+<%= link_to "Edit", edit_book_path(@book) %>|<%= link_to "Back", books_path %>

@@ -1,24 +1,39 @@
-<p id="notice">Book was successfully created.</p>
-
-<% @books.each do |book| %>
-
-<p>
-  <strong>Title:</strong>
-  <span>
-    <%= link_to book.本のタイトル, book_path(book.id)%>
-  </span>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <span>
-    <%= link_to book.感想, book_path(book.id)%>
-  </span>
-</p>
-
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
 <% end %>
 
 
-<a class="edit_57711" href="/books/57711/edit">Edit</a>
+<h1>Books</h1>
 
-<a class="back" href="/books">Back</a>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+      <td><%= link_to "Show", book_path(book) %></td>
+      <td><%= link_to "Edit", edit_book_path(book) %></td>
+      <td><%= link_to "Destroy" , book, method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+  <% end %>
+  </thead>
+</table>
+
+
+<h2>New book</h2>
+
+<% if flash.now[:error] %>
+  <p>error<%= flash.now[:error] %></p>
+<% end %>
+
+<%= form_for(@book) do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+  <p><%= f.submit 'Create Book' %></p>
+<% end %>
